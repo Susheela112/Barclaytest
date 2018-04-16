@@ -40,7 +40,7 @@ public class SeatArranger {
 					if(pos.getValue() >= Integer.parseInt(seatsReq)){
 						isPositionFound = true;
 						foundSeats = pos;
-						System.out.println(name + " Row " + pos.getRow() + " Column " + pos.getColumn());
+						System.out.println(name + " Row " + pos.getRow() + " Section " + pos.getColumn());
 						break;
 					}
 	    		}
@@ -53,7 +53,7 @@ public class SeatArranger {
 						counter++;
 						if (pos.getValue() >= Integer.parseInt(seatsReq)) {
 							isPositionFound = true;
-							System.out.println(name + " Row " + pos.getRow() + " Column " + pos.getColumn());
+							System.out.println(name + " Row " + pos.getRow() + " Section " + pos.getColumn());
 							break;
 						} else {
 							availablePostions.add( pos);
