@@ -1,27 +1,30 @@
-package barclay;
+package seats;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class SeatArranger {
+import beans.Position;
 
-	public static void main(String[] args) {
+public class Allocation {
+
+	public void allocateSeats(String fileName) throws FileNotFoundException {
 		ArrayList<Position> seats = new ArrayList<Position>();
 		Boolean seatsParsed = false;
 		List<Position> availablePostions = new LinkedList<Position>();
 		int counter = 0;
 		int rowCount=0;
 		int totalSeats = 0;
-		System.out.println("Enter input: ");
-		Scanner sc = new Scanner(System.in);
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		while(sc.hasNextLine()){
-			String nextLine = sc.nextLine();
+		ClassLoader classLoader = getClass().getClassLoader();
+		Scanner scanner = new Scanner(new File(classLoader.getResource(fileName).getFile()));
+		while(scanner.hasNextLine()){
+			String nextLine = scanner.nextLine();
 			if(nextLine.trim().equals("") ){
 				 seatsParsed = true;
-				 nextLine = sc.nextLine();
+				 nextLine = scanner.nextLine();
 			}
 			//Get all Clients and their seats requirements
 		    if( seatsParsed == true){		 
@@ -78,32 +81,7 @@ public class SeatArranger {
 					seats.add(pos);
 				}
 			}
-			
 		}
 	}
+}
 
-}
-class Position{
-	int row;
-	int column;
-	int value;
-	public int getRow() {
-		return row;
-	}
-	public void setRow(int row) {
-		this.row = row;
-	}
-	public int getColumn() {
-		return column;
-	}
-	public void setColumn(int column) {
-		this.column = column;
-	}
-	public int getValue() {
-		return value;
-	}
-	public void setValue(int value) {
-		this.value = value;
-	}
-	
-}
